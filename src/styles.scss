@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+
+$base-color: 'lightgrey';
+$nav-color: '#00334c';
+
+body {
+    margin: 0px;
+    font-family:'Gill Sans', 'Gill Sans MT', 'Calibri', 'Trebuchet MS', 'sans-serifarial',helvetica;
+    background: #d9d9d9;
+}
+
+.country {
+    fill: #f7f7f7;
+    stroke: #000;
+    stroke-width: 0.5px;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+svg {
+    border: 1px solid gray; 
+}
+
+.map-wraper{
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 10px;
+}
