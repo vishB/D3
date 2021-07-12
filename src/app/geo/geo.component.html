@@ -1,8 +1,14 @@
 <div class="row map-wraper">
     <div class="col-md-12">
         <div class="row">
-            <div class="col-md-12 map-header ">
-                <label for="Years">{{year}}</label>
+            <div class="col-md-8 map-header ">
+                <label for="Years">Year {{year}}</label>
+            </div>
+            <div class="col-md-4 map-header ">
+                <select class="form-control selectStyle"  [(ngModel)]="filterKeyword" (change)="updateData()">  
+                    <option disabled>Select a filter criteria.</option>
+                    <option *ngFor="let item of happynessIndexOptions" [value]='item.value'>{{item.name}}</option>  
+                </select>
             </div>
         </div>
            
@@ -12,13 +18,16 @@
                
             </div>
             <div class="col-md-3 d-grid gap-2">
-                <button (click)="year>1946?year=year-1:year" class="btn btn-outline-success">Previous</button>
+                <button (click)="[year>2005?year=year-1:year, updateData()]" [disabled]="year==2005" class="btn btn-outline-success">Previous</button>
             </div>          
             <div class="col-md-3 d-grid gap-2">
-                <button (click)="year<2021?year=year+1:year" class="btn btn-outline-success">Next</button>
+                <button (click)="[year<2021?year=year+1:year, updateData()]" [disabled]="year==currentYear" class="btn btn-outline-success">Next</button>
             </div>        
             <div class="col-md-3">
-                
+                <div class="form-check form-switch">
+                    <input class="form-check-input toogle-switch" type="checkbox" id="flexSwitchCheckDefault" value="filterType" [checked]="filterType" (change)="filterType = !filterType">
+                    <p>{{filterType?'GDP':'Happiness Index'}}</p>
+                </div>
             </div>            
         </div>
     </div>

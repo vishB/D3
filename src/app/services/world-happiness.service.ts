@@ -14,6 +14,10 @@ export class WorldHappinessService {
   }
 
   getTopoJsonData(): any {
-    return this.http.get('assets/world.topojson');
+    return this.http.get('assets/capitals.topojson');
+  }
+
+  getCities(): any {
+    return this.http.get('assets/cities.csv', {responseType: 'text'});
   }
 }

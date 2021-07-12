@@ -22,5 +22,35 @@
         border-radius: 3px;
 
     }
-    
+
+    select{
+        margin-top: 5px;
+        margin-bottom: 5px;
+        font-size: 17px;
+        font-family: serif;
+        border-left: 5px solid #42A948;
+    }
+}
+
+.toogle-switch{
+    width: 15%;
+    height: 15px;
+}
+
+.form-switch p{
+    font-family: ui-sans-serif;
+    font-size: 18px;
+    margin-top: 10px;
+    text-align: left;
+    width: 300px;
+}
+
+.form-check-input:checked {
+    background-color: #29ba74;
+    border-color: green;
+}
+
+.form-check-input {
+    background-color: #fd0d0d;
+    border-color: #fd0d0d;
 }
