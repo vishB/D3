@@ -1,5 +1,26 @@
 <nav><h3>World Happiness Report</h3></nav>
 
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-md-12">
+        <app-geo></app-geo>
+    </div>
+  </div>
+
+  <div class="row" class="racing-bar-chart-sec">
+    <div class="col-md-12 racing-bar-chart">
+      <app-bar [data]="data" [startYear]="1999" [endYear]="2020"></app-bar>
+    </div>
+  </div>
+</div> -->
+
 <div class="container">
-  <app-geo></app-geo>
+  <div class="row">
+    <div class="col-md-8">
+        <app-geo></app-geo>
+    </div>
+    <div class="col-md-4 racing-bar-chart">
+      <app-bar [data]="data" [startYear]="2005" ></app-bar>
+    </div>
+  </div>
 </div>

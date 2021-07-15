@@ -6,6 +6,7 @@
     margin-bottom: 0px;
     font-family: fantasy;
     background-color: white;
+    height: 50px;
 
     button{
         font-family: sans-serif;
@@ -29,11 +30,12 @@
         font-size: 17px;
         font-family: serif;
         border-left: 5px solid #42A948;
+        appearance: auto;
     }
 }
 
 .toogle-switch{
-    width: 15%;
+    width: 24%;
     height: 15px;
 }
 
@@ -50,7 +52,10 @@
     border-color: green;
 }
 
-.form-check-input {
-    background-color: #fd0d0d;
-    border-color: #fd0d0d;
+.filterTxt{
+    font-size: 18px;
+    text-align: right;
+    font-family: sans-serif;
+    margin-top: 11px;
+    font-weight: 700;
 }

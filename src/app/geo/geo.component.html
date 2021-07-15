@@ -1,36 +1,61 @@
 <div class="row map-wraper">
     <div class="col-md-12">
+        <!-- Header -->
         <div class="row">
-            <div class="col-md-8 map-header ">
+            <div class="col-md-3 map-header ">
                 <label for="Years">Year {{year}}</label>
             </div>
-            <div class="col-md-4 map-header ">
-                <select class="form-control selectStyle"  [(ngModel)]="filterKeyword" (change)="updateData()">  
+            <div class="col-md-6 map-header">
+                <div class="row">
+                    <div class="col-md-6 filterTxt">
+                        <label for="filterByRegion">Filter by region</label>
+                    </div>
+                    <div class="col-md-6">
+                        <select class="form-control selectStyle" [(ngModel)]="regionFilterKeyword"
+                            (change)="updateData()">
+                            <option disabled>Select a filter criteria.</option>
+                            <option selected="true">All</option>
+                            <option *ngFor="let item of regionList" [value]='item'>{{item}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 map-header">
+                <select class="form-control selectStyle" [(ngModel)]="filterKeyword" (change)="updateData()"
+                    *ngIf="!filterType">
                     <option disabled>Select a filter criteria.</option>
-                    <option *ngFor="let item of happynessIndexOptions" [value]='item.value'>{{item.name}}</option>  
+                    <option *ngFor="let item of happynessIndexOptions" [value]='item.value'>{{item.name}}</option>
                 </select>
             </div>
         </div>
-           
-        <div class="row" id="wh-map"></div>
+
+        <!-- gragh area -->
+        <figure class="row" id="wh-map">
+            <figure id="bar"></figure>
+        </figure>
+        
+
+        <!-- Footer -->
         <div class="row map-header">
             <div class="col-md-3">
-               
+
             </div>
             <div class="col-md-3 d-grid gap-2">
-                <button (click)="[year>2005?year=year-1:year, updateData()]" [disabled]="year==2005" class="btn btn-outline-success">Previous</button>
-            </div>          
+                <button (click)="[year>2005?year=year-1:year, updateData()]" [disabled]="year==2005"
+                    class="btn btn-outline-success">Previous</button>
+            </div>
             <div class="col-md-3 d-grid gap-2">
-                <button (click)="[year<2021?year=year+1:year, updateData()]" [disabled]="year==currentYear" class="btn btn-outline-success">Next</button>
-            </div>        
+                <button (click)="[year<2021?year=year+1:year, updateData()]" [disabled]="year==currentYear"
+                    class="btn btn-outline-success">Next</button>
+            </div>
             <div class="col-md-3">
                 <div class="form-check form-switch">
-                    <input class="form-check-input toogle-switch" type="checkbox" id="flexSwitchCheckDefault" value="filterType" [checked]="filterType" (change)="filterType = !filterType">
+                    <input class="form-check-input toogle-switch" type="checkbox" id="flexSwitchCheckDefault"
+                        value="filterType" [checked]="!filterType" (change)="[filterType = !filterType, checkGDP()]">
                     <p>{{filterType?'GDP':'Happiness Index'}}</p>
                 </div>
-            </div>            
+            </div>
         </div>
     </div>
 
 </div>
-

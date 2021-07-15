@@ -13,6 +13,10 @@ export class WorldHappinessService {
     return this.http.get('assets/world-happiness-report.csv', {responseType: 'text'});
   }
 
+  getBrandValues(): any {
+    return this.http.get('assets/brand_values.csv', {responseType: 'text'});
+  }
+
   getTopoJsonData(): any {
     return this.http.get('assets/capitals.topojson');
   }

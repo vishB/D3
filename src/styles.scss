@@ -1,5 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 
+@media (min-width: 1400px){
+
+  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1500px;
+  }
+}
+
 $base-color: 'lightgrey';
 $nav-color: '#00334c';
 
@@ -17,32 +24,94 @@ body {
     stroke-linejoin: round;
   }
 
+#race-chart{
+  svg{
+    margin-top:50px;
+    background-color: #fff;
+    padding:10px;
+  }
+}  
+
 svg {
     border: 1px solid gray;
     background: #c0d6e4;
 }
 
+.racing-bar-chart{
+  padding-left:0px;
+}
+
 .map-wraper{
     padding-left: 0px;
     padding-right: 0px;
-    margin-top: 10px;
 }
 
 #wh-map >*{
     padding-right: 0px;
-    padding-left: 0px
+    padding-left: 0px;
+}
+
+#wh-map {
+    margin-bottom: 0px;
 }
 
 div.tooltip {
     position: absolute;
     text-align: center;
-    width: 60px;
-    height: 28px;
-    padding: 2px;
-    font: 12px sans-serif;
-    background: lightsteelblue;
+    padding: .2rem;
+    background: #313639;
+    color: #f9f9f9;
     border: 0px;
     border-radius: 8px;
     pointer-events: none;
+    font-size: .7rem;
+    height:24px
   }
+
+    text{
+      font-size: 16px;
+      font-family: Open Sans, sans-serif;
+    }
+    text.title{
+      font-size: 24px;
+      font-weight: 500;
+    }
+      text.subTitle{
+        font-weight: 500;
+        fill: #777777;
+      }
+      text.caption{
+        font-weight: 400;
+        font-size: 14px;
+        fill: #777777;
+      }
+      text.label{
+        font-weight: 600;
+      }
+    
+      text.valueLabel{
+       font-weight: 300;
+      }
+    
+      text.yearText{
+        font-size: 64px;
+        font-weight: 700;
+        opacity: 0.25;
+      }
+      .tick text {
+        fill: #777777;
+      }
+      .xAxis .tick:nth-child(2) text {
+        text-anchor: start;
+      }
+      .tick line {
+        shape-rendering: CrispEdges;
+        stroke: #dddddd;
+      }
+      .tick line.origin{
+        stroke: #aaaaaa;
+      }
+      path.domain{
+        display: none;
+      }  
   

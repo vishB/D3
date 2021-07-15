@@ -1,0 +1,69 @@
+.map-header{
+  text-align: center;
+  font-size: 30px;
+  border: 0.5px solid lightgray;
+  box-shadow: 0px 1px 4px -2px;
+  margin-bottom: 0px;
+  font-family: fantasy;
+  background-color: white;
+  height: 50px;
+}
+
+::ng-deep text {
+    font-size: 12px;
+    font-family: Open Sans, sans-serif;
+  }
+  ::ng-deep text.title {
+    font-size: 24px;
+    font-weight: 500;
+  }
+  ::ng-deep text.subTitle {
+    font-weight: 500;
+    fill: black;
+  }
+  ::ng-deep text.caption {
+    font-weight: 400;
+    font-size: 12px;
+    fill: #777777;
+  }
+  ::ng-deep text.label {
+    font-size: 15px;
+    font-weight: 300;
+    font-family: "Benne", serif;
+  }
+  
+  ::ng-deep text.valueLabel {
+    font-size: 13px;
+    font-weight: 100;
+  }
+  ::ng-deep .title {
+    font-size: 30px !important;
+    font-weight: 300;
+    font-family: "Benne", serif;
+  }
+  
+  ::ng-deep text.yearText {
+    font-size: 40px;
+    line-height: 1.5;
+    -webkit-text-size-adjust: 100%;
+    color: #1b1e23;
+    font-weight: 600;
+    opacity: 0.75;
+  }
+  ::ng-deep .tick text {
+    fill: #777777;
+  }
+  ::ng-deep .xAxis .tick:nth-child(2) text {
+    text-anchor: start;
+  }
+  ::ng-deep .tick line {
+    shape-rendering: CrispEdges;
+    stroke: #dddddd;
+  }
+  ::ng-deep .tick line.origin {
+    stroke: #aaaaaa;
+  }
+  ::ng-deep path.domain {
+    display: none;
+  }
+  
