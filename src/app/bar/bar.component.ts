@@ -41,8 +41,8 @@ export class BarComponent implements OnInit {
   ticker;
 
   top_n = 10;
-  height = 600;
-  width = 960;
+  width: number = window.innerWidth - window.innerWidth / 3;
+  height: number = 830;
   margin = {
     top: 80,
     right: 0,
@@ -59,9 +59,14 @@ export class BarComponent implements OnInit {
     this.drawChart();
 
     this.ds.bs.subscribe(data=>{
-      this.endYear = data.year;
-      this.filterKeyword = data.filterKeyword;
-      this.countries = data.countries;
+      if(data){
+        console.log(data);
+        this.endYear = data.year;
+        this.filterKeyword = data.filterKeyword;
+        this.countries = data.countries;
+      }else{
+        this.endYear = 2020;
+      }
     })
   }
   

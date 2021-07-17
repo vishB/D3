@@ -1,0 +1,19 @@
+.map-header{
+  text-align: center;
+  font-size: 30px;
+  // box-shadow: 0px 1px 4px -2px;
+  margin-bottom: 0px;
+  font-family: fantasy;
+  background-color: white;
+  height: 50px;
+  // padding-top: 6px;
+
+  select{
+      // margin-top: 5px;
+      // marg in-bottom: 5px;
+      font-size: 17px;
+      font-family: serif;
+      border-left: 5px solid #42A948;
+      appearance: auto;
+  }
+}

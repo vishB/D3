@@ -1,0 +1,20 @@
+
+    
+
+    <!-- gragh area -->
+<!-- <div class="row"> -->
+    <div class="row">
+        <div class="col-md-12">
+            <!-- <label for="racing-bar-chart"><h5>Racing Bar Chart</h5></label> -->
+            <div class="col-md-8 map-header">
+                <select class="form-control selectStyle" [(ngModel)]="filterKeyword" (change)="updateData()">
+                    <option disabled>Select a filter criteria.</option>
+                    <option *ngFor="let item of happynessIndexOptions" [value]='item.value'>{{item.name}}</option>
+                </select>
+            </div>  
+        </div>
+    </div>
+    <div class="row">
+        <figure id="rbc-chart" class="col-md-12"></figure>
+    </div>
+<!-- </div> -->

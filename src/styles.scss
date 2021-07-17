@@ -1,12 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
-@media (min-width: 1400px){
-
-  .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-    max-width: 1500px;
-  }
-}
-
 $base-color: 'lightgrey';
 $nav-color: '#00334c';
 
@@ -24,21 +16,69 @@ body {
     stroke-linejoin: round;
   }
 
-#race-chart{
+#rbc-chart{
   svg{
-    margin-top:50px;
-    background-color: #fff;
-    padding:10px;
+    background-color: #E5E7E9;
+    padding: 10px;
+    border: 0;
+
+    text{
+      font-size: 11px;
+      font-family: Open Sans, sans-serif;
+    }
+    text.title{
+      font-size: 1 rem;
+      font-weight: 600;
+    }
+      text.subTitle{
+        font-weight: 500;
+        fill: #777777;
+      }
+      text.caption{
+        font-weight: 400;
+        font-size: 14px;
+        fill: #777777;
+      }
+      text.label{
+        font-weight: 600;
+      }
+    
+      text.valueLabel{
+       font-weight: 300;
+      }
+    
+      text.yearText{
+        font-size: 30px;
+        font-weight: 700;
+        opacity: 0.25;
+      }
+      .tick text {
+        fill: #777777;
+      }
+      .xAxis .tick:nth-child(2) text {
+        text-anchor: start;
+      }
+      .tick line {
+        shape-rendering: CrispEdges;
+        stroke: #dddddd;
+      }
+      .tick line.origin{
+        stroke: #aaaaaa;
+      }
+      path.domain{
+        display: none;
+      }
+      
   }
 }  
 
 svg {
-    border: 1px solid gray;
-    background: #c0d6e4;
-}
-
-.racing-bar-chart{
-  padding-left:0px;
+  border: 10px solid #fff;
+  background: #c0d6e4;
+  text.title{
+    font-size: 0.8rem;
+    font-weight: 500;
+  }
 }
 
 .map-wraper{
@@ -68,50 +108,3 @@ div.tooltip {
     height:24px
   }
 
-    text{
-      font-size: 16px;
-      font-family: Open Sans, sans-serif;
-    }
-    text.title{
-      font-size: 24px;
-      font-weight: 500;
-    }
-      text.subTitle{
-        font-weight: 500;
-        fill: #777777;
-      }
-      text.caption{
-        font-weight: 400;
-        font-size: 14px;
-        fill: #777777;
-      }
-      text.label{
-        font-weight: 600;
-      }
-    
-      text.valueLabel{
-       font-weight: 300;
-      }
-    
-      text.yearText{
-        font-size: 64px;
-        font-weight: 700;
-        opacity: 0.25;
-      }
-      .tick text {
-        fill: #777777;
-      }
-      .xAxis .tick:nth-child(2) text {
-        text-anchor: start;
-      }
-      .tick line {
-        shape-rendering: CrispEdges;
-        stroke: #dddddd;
-      }
-      .tick line.origin{
-        stroke: #aaaaaa;
-      }
-      path.domain{
-        display: none;
-      }  
-  

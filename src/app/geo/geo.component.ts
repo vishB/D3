@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WorldHappinessService } from '../services/world-happiness.service';
-// import { FormGroup, FormControl } from '@angular/forms';
 import * as d3 from 'd3';
 import { geoMercator, geoPath, json } from 'd3';
 import { feature } from 'topojson-client';
@@ -31,20 +30,13 @@ export class GeoComponent implements OnInit {
   regionFilterKeyword: string = 'All';
   topTenRecords: any;
   allCountries:[];
-
+  happynessIndexOptions: Array<any>
   regionList = ["Africa", "Arab States", "Asia & Pacific", "Europe", "Middle east", "North America", "South/Latin America"];
-  happynessIndexOptions = [{ name: 'Freedom to make life choices', value: 'freedomToMakeLifeChoices', range: [0.001, 0.999] },
-  { name: 'Healthy life expectancy at birth', value: 'healthyLifeExpectancyAtBirth', range: [10, 100] },
-  { name: 'Generosity', value: 'generosity', range: [-0.001, 1.0] },
-  { name: 'Life Ladder', value: 'lifeLadder', range: [1.000, 10.000] },
-  { name: 'Negative affect', value: 'negativeAffect', range: [1.000, 10.000] },
-  { name: 'Perceptions of corruption', value: 'perceptionsOfCorruption', range: [0.10, 1] },
-  { name: 'Positive affect', value: 'positiveAffect', range: [0.10, 1] },
-  { name: 'Social support', value: 'socialSupport', range: [0.10, 1] }]
-
+  
   constructor(private dataService: WorldHappinessService, private ds:DataSharingService) { }
 
   ngOnInit(): void {
+    this.happynessIndexOptions = this.ds.getHIIndexes();
     this.getGraphDetails();
     this.year = this.currentYear;
   }
@@ -82,7 +74,7 @@ export class GeoComponent implements OnInit {
       this.filterKeyword = GDPObject.value;
     } else if(!this.filterType && this.happynessIndexOptions.some(e => e.value == 'logGDPperCapita')){
       this.happynessIndexOptions.pop();
-      this.filterKeyword = 'freedomToMakeLifeChoices';
+      this.filterKeyword = 'lifeLadder';
     }
     console.log(this.happynessIndexOptions);
     this.updateData()
@@ -90,12 +82,10 @@ export class GeoComponent implements OnInit {
 
   updateData(): void {
     if (this.regionFilterKeyword == 'All') {
-      this.filterTopoJSON(this.data.filter(item => item.year == this.year));
+      this.filterTopoJSON(this.ds.getDataByYear(this.data,this.year));
     } else {
       this.filterTopoJSON(this.data.filter(item => (item.year == this.year && item.Region == this.regionFilterKeyword)));
     }
-
-    this.ds.bs.next({year: this.year, filterKeyword: this.filterKeyword, countries:this.allCountries });
   }
 
   filterTopoJSON(selectedYearData: []) {
@@ -108,6 +98,7 @@ export class GeoComponent implements OnInit {
 
     this.fetchTopTen(syData);
     this.allCountries = syData;
+    this.ds.bs.next({year: this.year, filterKeyword: this.filterKeyword, countries:this.allCountries });
 
     syData.forEach(item => {
       refinedGeos.push(geometries.filter(function (geos) {
@@ -163,8 +154,9 @@ export class GeoComponent implements OnInit {
     let filter = this.filterKeyword;
     const projection = geoMercator()
       .translate([this.width / 2, this.height / 2])
-      // .scale(100)
-      .scale((this.width - 1) / 2 / Math.PI);
+      .scale(this.width / 3 / Math.PI)
+      // .scale((this.width - 1) / 2 / Math.PI)
+      .center([65, 40]);
 
     const pathGenerator = geoPath().projection(projection);
     let path = d3.geoPath().projection(projection);
@@ -176,7 +168,7 @@ export class GeoComponent implements OnInit {
       .style("opacity", 0);
 
     let color = d3.scaleLinear<string, number>().domain(this.getRange()).range(['#ff0000', '#00ff00']);
-    let scale = d3.scaleLinear<number, number>().domain(this.getRange()).range([2.5, 8]);
+    let scale = d3.scaleLinear<number, number>().domain(this.getRange()).range([2.5, 6]);
     let opacScale = d3.scaleLinear<number, number>().domain(this.getRange()).range([0.7, 1]);
 
     this.countries = this.getCountries().features;
@@ -218,11 +210,11 @@ export class GeoComponent implements OnInit {
         .attr("fill", function (d) {
           return color(d[filter]);
         })
-        .style("stroke", '#000')
-        .style("stroke-width", 1.2)
+        .style("stroke", '#e8f5eb')
+        .style("stroke-width", 0.5)
         .on("mouseover", function (event, d) {
           d3.select(this).transition().duration(100)
-            .attr("r", 10);
+            .attr("r", 8);
           div.transition()
             .duration(200)
             .style("opacity", .9);

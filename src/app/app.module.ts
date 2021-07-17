@@ -6,12 +6,16 @@ import { AppComponent } from './app.component';
 import { BarComponent } from './bar/bar.component';
 import { GeoComponent } from './geo/geo.component';
 import { FormsModule } from '@angular/forms';
+import { RacingBarChartComponent } from './racing-bar-chart/racing-bar-chart.component';
+import { RbcComponent } from './rbc/rbc.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BarComponent,
-    GeoComponent
+    GeoComponent,
+    RacingBarChartComponent,
+    RbcComponent
   ],
   imports: [
     BrowserModule,
